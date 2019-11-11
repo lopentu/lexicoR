@@ -1,8 +1,14 @@
 Package: lexicoR
-Title: What the Package Does (one line, title case)
+Title: Access Chinese Lexical Resources
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: c(
+  person("Yongfu", "Liao", email = "liao961120@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-1814-2993")),
+  person("LOPE", role = c("cph", "fnd"))
+  )
+URL: https://lopentu.github.io/lexicoR, https://github.com/lopentu/lexicoR
+BugReports: https://github.com/lopentu/lexicoR/issues
+Description: R interface to access Chinese lexical resources such as 
+  Chinese Wordnet (CWN), Chinese Lexical Database, and DeepLex.
 Depends: R (>= 3.6.0)
 License: What license is it under?
 Encoding: UTF-8
