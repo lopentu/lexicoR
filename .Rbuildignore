@@ -1,3 +1,5 @@
 ^lexicoR\.Rproj$
 ^\.Rproj\.user$
-/data-raw
+^data-raw$
+^inst/CwnGraph$
+^inst/CwnGraph\.zip$

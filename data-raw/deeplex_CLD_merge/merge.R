@@ -27,3 +27,4 @@ deeplex_merged <- left_join(deeplex, cld, by = c("dl.lu_sim" = "cld.Word")) %>%
 #saveRDS(merged_full, "cld_DL_merged_full.rds")
 saveRDS(cld_merged, "cld_base_merged.rds")
 saveRDS(deeplex_merged, "deeplex_base_merged.rds")
+

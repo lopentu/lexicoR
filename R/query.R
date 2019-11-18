@@ -19,7 +19,18 @@ query_local <- function(query, regex = FALSE, db = c("deeplex", "cld"), as_tibbl
       stop("db: `", paste(db, collapse = "` or `"), "` not available.")
 
   # Query each database
-  db <- paste0('lexicoR:::', db)
+  #db <- paste0('lexicoR:::', db)
+
+  db_path <- system.file("database.rda", package = "lexicoR")
+  if (db_path == "")
+      #install from web
+      1
+  # Load db
+  if (!(exists('cld') && is.data.frame(get('cld'))))
+      load(db_path, envir = globalenv())
+  if (!(exists('deeplex') && is.data.frame(get('deeplex'))))
+      load(db_path, envir = globalenv())
+
   q_result <- vector("list", length(db))
   for (i in seq_along(q_result)) {
       # query db
