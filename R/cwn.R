@@ -12,25 +12,42 @@
 #'   \code{cwn}.
 #'
 #' @export
-load_cwn <- function(python_path = NULL, type = c("virtualenv", "condaenv", "python"), ...) {
-  load_cwn <- system.file(package = "lexicoR", "CwnGraph", "load_cwn.py")
-  cwd <- getwd()
+load_cwn <-
+  function(python_path = NULL,
+           type = c("virtualenv", "condaenv", "python"),
+           ...) {
+    load_cwn <- system.file(package = "lexicoR", "CwnGraph", "load_cwn.py")
 
-  tryCatch({
-    setwd(dirname(load_cwn))
-
-    # Load python path
-    if (!is.null(python_path)) {
-      stopifnot(type[1] %in% c("virtualenv", "condaenv", "python"))
-      eval(parse(text = paste0('use_python <- reticulate::use_', type[1])))
-      use_python(python_path, required = TRUE, ...)
+    # Download CwnGraph from internet
+    if (load_cwn == "") {
+        cat("Can't find `CwnGraph`\nDo you want to download it?\n")
+        permission <- readline("Press 'y' to download: ")
+        if (permission %in% c("y", "Y")) {
+            # Download `CwnGraph.zip` from the web
+            lexicoR::install_db(install = c(cwn = T, db = F))
+            load_cwn <- system.file(package = "lexicoR", "CwnGraph", "load_cwn.py")
+        }
     }
 
-    # Load CwnGraph
-    reticulate::source_python(load_cwn, envir = globalenv(), convert = F)
-    },
-  finally = setwd(cwd))
-}
+    # Enter python mode
+    cwd <- getwd()
+    tryCatch({
+        setwd(dirname(load_cwn))
+
+        # Load python path
+        if (!is.null(python_path)) {
+          stopifnot(type[1] %in% c("virtualenv", "condaenv", "python"))
+          eval(parse(text = paste0(
+            'use_python <- reticulate::use_', type[1]
+          )))
+          use_python(python_path, required = TRUE, ...)
+        }
+
+        # Load CwnGraph
+        reticulate::source_python(load_cwn, envir = globalenv(), convert = F)
+        },
+        finally = setwd(cwd))
+  }
 
 #' Reticulate alias
 #'
