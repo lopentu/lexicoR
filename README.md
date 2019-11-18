@@ -13,6 +13,12 @@ remotes::install_github('lopentu/lexicoR', ref = "lite")
 
 ## Notes for Developers
 
+#### Build pkg website
+
+```r
+pkgdown::build_site(examples = F)
+```
+
 #### Clean up large data
 
 1. On `branch:master`, commit and push to GitHub.

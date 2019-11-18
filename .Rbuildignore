@@ -4,3 +4,6 @@
 ^inst/CwnGraph$
 ^inst/CwnGraph\.zip$
 ^push2lite\.sh$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
