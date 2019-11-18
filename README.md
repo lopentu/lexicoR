@@ -8,6 +8,6 @@ R interface to access Chinese lexical resources.
 
 ```r
 #install.packages('remotes')
-remotes::install_github('lopentu/lexicoR')
+remotes::install_github('lopentu/lexicoR', ref = "lite")
 ```
 
