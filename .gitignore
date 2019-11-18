@@ -1,5 +1,3 @@
 .Rproj.user
 *.log
-/inst/database.rds
-/inst/CwnGraph.zip
-/inst/CwnGraph
+build.sh
