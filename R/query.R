@@ -73,7 +73,9 @@ load_database.rda <- function() {
 
     # Load db
     if (!(exists('cld') && is.data.frame(get('cld'))))
+        message('Loading `database.rds`...\n')
         load(db_path, envir = globalenv())
     if (!(exists('deeplex') && is.data.frame(get('deeplex'))))
+        message('Loading `database.rds`...\n')
         load(db_path, envir = globalenv())
 }
