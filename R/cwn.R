@@ -1,6 +1,6 @@
 #' Load CwnGraph from python
 #'
-#' @param python_path Path to Python binary, directory of virtualenv,
+#' @param python_path Path to Python 3 binary, directory of virtualenv,
 #'   or name of Conda environment. Defaults to \code{NULL}.
 #'   See \code{\link[reticulate]{use_python}} for details.
 #' @param type A string. One of \code{virtualenv}, \code{condaenv}, and \code{python},

@@ -1,0 +1,47 @@
+語法語意
+情緒
+頻率 (BTB)
+華語學習難度
+
+-------------------------------
+
+頻率資料
+1. types of freq. data
+2. source of freq. data
+
+問題
+1. dynamic
+2. 不夠多元 (distributional, 不同看板)
+3. regional (Taiwan vs. China)
+
+3. How to link between dynamic data & database
+
+freq_search("喝", pos, year, board)
+
+- 2015 年後，用 鄉民百科 斷詞
+
+- ptt freq
+    1. 2004-2010
+    2. 2010-2015
+    3. 2015-2019
+    4. Cumulative
+
+--------------------------------
+
+Core
+
+us: 18000 詞條 (150 vars)
+CLD: 48644 詞條 (269 vars)
+
+- 以 CLD 為詞條，加入變量： Cwn sense num, ptt freq (5-year gap)
+    - merge CLD & deeplex
+
+lexicoR
+
+ptt_crawl()
+freq_search(lemma, database = c("pttCorpus_api", "cld_merged"), pos, year, board)
+sense(lemma, lemma.id) --> gloss, example, ...
+
+
+
+
