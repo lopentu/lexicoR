@@ -1,0 +1,91 @@
+---
+title: "Query Chinese Wordnet with CwnGraph"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Query Chinese Wordnet with CwnGraph}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+`lexicoR` provides access to Chinese Wordnet by wrapping [`CwnGraph`](https://github.com/kylecomtw/CwnGraph/blob/master/CwnQuery.ipynb), a python package to query Chinese Wordnet.
+
+In order to use this functionality, you need to have Python 3 installed on the computer.
+
+
+## Load CwnGraph into R
+
+The code below exposes `cwn` (python object) to the R environment:
+
+```{r}
+library(lexicoR)
+load_cwn(python_path = "/usr/bin/python3", type = "python")
+```
+
+You can also use a virtual environment provided by `virtualenv` (on Linux or Mac) or `conda` (on Windows):
+
+```r
+load_cwn(python_path = "path/to/virtualenv/dir", type = "virtualenv")
+```
+
+
+## Query lemma and senses in Chinese Wordnet
+
+### Query by lemma
+
+```{r}
+lemmas <- cwn$find_lemma("電腦")
+lemmas
+```
+
+```{r}
+lemmas[0]$senses
+```
+
+```{r}
+lemmas[0]$senses[0]$relations
+```
+
+```{r}
+senses <- py_to_r(lemmas[0]$senses)
+for (sense in senses) {
+    print(sense)
+    print(sense$relations)
+    cat('----\n\n')
+}
+```
+
+```{r}
+senses[[1]]$data()
+```
+
+### Query by sense
+
+```{r}
+cwn$find_senses(lemma="^車$")
+```
+```{r}
+senses_related_to_wheel <- py_to_r(cwn$find_senses(definition="輪子"))
+for (sense in senses_related_to_wheel) {
+    print(sense)
+}
+
+```
+
+
+```{r}
+cwn$find_senses(examples="學步車")
+```
+
+```{r}
+spend_senses <- cwn$find_senses(lemma="花費")
+spend_senses[0]$facets
+spend_senses[0]$all_examples()
+```
+

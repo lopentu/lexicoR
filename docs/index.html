@@ -10,7 +10,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Access Chinese Lexical Resources">
+<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="Access Chinese Lexical Resources">
 <meta property="og:description" content="R interface to access Chinese lexical resources such as 
   Chinese Wordnet (CWN), Chinese Lexical Database, and DeepLex.">
 <meta name="twitter:card" content="summary">
@@ -47,6 +48,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/CwnGraph.html">Query Chinese Wordnet with CwnGraph</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -82,6 +95,11 @@
 <div id="notes-for-developers" class="section level2">
 <h2 class="hasAnchor">
 <a href="#notes-for-developers" class="anchor"></a>Notes for Developers</h2>
+<div id="build-pkg-website" class="section level4">
+<h4 class="hasAnchor">
+<a href="#build-pkg-website" class="anchor"></a>Build pkg website</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>(<span class="dt">examples =</span> F)</a></code></pre></div>
+</div>
 <div id="clean-up-large-data" class="section level4">
 <h4 class="hasAnchor">
 <a href="#clean-up-large-data" class="anchor"></a>Clean up large data</h4>
@@ -89,8 +107,8 @@
 <li>On <code>branch:master</code>, commit and push to GitHub.</li>
 <li>
 <p>On <code>branch:master</code>, run:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="fu">bash</span> push2lite.sh</a></code></pre></div>
-<p>This pushes a cleaned-up version of the package to <code>branch:lite</code> on GitHub</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="fu">bash</span> push2lite.sh</a></code></pre></div>
+<p>This pushes a cleaned-up version of the package to <code>branch:lite</code> on GitHub.</p>
 </li>
 </ol>
 </div>
@@ -98,9 +116,9 @@
 <h4 class="hasAnchor">
 <a href="#rebuild-binaries-from-raw-data" class="anchor"></a>Rebuild binaries from raw data</h4>
 <p>On <code>branch:master</code>, cd to <code>data-raw/deeplex_CLD_merge/</code> and run the commands below in order:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">Rscript</span> toRDS.R</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="ex">Rscript</span> merge.R</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="ex">Rscript</span> bundle2pkg.R</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="ex">Rscript</span> toRDS.R</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="ex">Rscript</span> merge.R</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="ex">Rscript</span> bundle2pkg.R</a></code></pre></div>
 <p>This creates <code>database.rda</code> in the current directory. Compress and copy this file to <code>lopentu/lexicoR-data/inst/</code>.</p>
 </div>
 </div>
