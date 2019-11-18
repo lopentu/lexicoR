@@ -3,4 +3,4 @@
 ^data-raw$
 ^inst/CwnGraph$
 ^inst/CwnGraph\.zip$
-^build\.sh$
+^push2lite\.sh$
