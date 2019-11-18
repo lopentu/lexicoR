@@ -28,7 +28,7 @@ pkgdown::build_site(examples = F)
     bash push2lite.sh
     ```
 
-    This pushes a cleaned-up version of the package to `branch:lite` on GitHub
+    This pushes a cleaned-up version of the package to `branch:lite` on GitHub.
 
 
 #### Rebuild binaries from raw data
