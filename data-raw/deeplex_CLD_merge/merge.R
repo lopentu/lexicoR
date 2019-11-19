@@ -23,6 +23,13 @@ deeplex_merged <- left_join(deeplex, cld, by = c("dl.lu_sim" = "cld.Word")) %>%
   rename(lu_trad = dl.lu,
          lu_simp = dl.lu_sim)
 
+# Drop columns with all NAs
+cld_merged <- cld_merged[, colSums(is.na(cld_merged)) != nrow(cld_merged), drop = FALSE]
+deeplex_merged <- deeplex_merged[, colSums(is.na(deeplex_merged)) != nrow(deeplex_merged), drop = FALSE]
+
+# Sort columns
+cld_merged <- cld_merged[,c("lu_trad", "lu_simp", sort(colnames(cld_merged)[3:ncol(cld_merged)]))]
+deeplex_merged <- deeplex_merged[,c("lu_trad", "lu_simp", sort(colnames(deeplex_merged)[3:ncol(deeplex_merged)]))]
 
 #saveRDS(merged_full, "cld_DL_merged_full.rds")
 saveRDS(cld_merged, "cld_base_merged.rds")

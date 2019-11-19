@@ -36,19 +36,21 @@ query_local <- function(query, regex = FALSE, db = c("deeplex", "cld"), as_tibbl
     }
 
     # Merge query results
-    merged_query_df <- Reduce(
-        function(df1, df2) merge(df1, df2, by = c("lu_trad", "lu_simp"), all = TRUE),
-        q_result
-        )
+    suppressMessages({
+        df <- dplyr::full_join(q_result[[1]], q_result[[2]])
+        })
+
+    #df <- Reduce(function(df1, df2) merge(df1, df2), q_result)
 
     # Clean up both NA in `lu_simp` & `lu_trad`
-    isNA <- is.na(merged_query_df$lu_simp) & is.na(merged_query_df$lu_trad)
-    merged_query_df <- merged_query_df[!isNA, ]
+    isNA <- is.na(df$lu_simp) & is.na(df$lu_trad)
+    df <- df[!isNA, ]
+
     # Convert to tibble
     if (as_tibble)
-        merged_query_df <- tibble::as_tibble(merged_query_df)
+        df <- tibble::as_tibble(df)
 
-    return(merged_query_df)
+    return(df)
 }
 
 

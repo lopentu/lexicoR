@@ -1,0 +1,26 @@
+---
+title: "Query DeepLex & Chinese Lexical Database"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Query DeepLex & Chinese Lexical Database}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lexicoR)
+```
+
+## Lexical databases  in `lexicoR`
+
+`lexicoR` contains two lexical databases, [DeepLex](http://dx.doi.org/10.6129%2fCJP.201909_61(3).0004) and [Chinese Lexical Database](http://www.chineselexicaldatabase.com).
+
+![The numbers of lexical entries in DeepLex, Chinese Lexical Database, and Chinese Wordnet](cld_deeplex_cwn.png){.half}
+
