@@ -11,7 +11,7 @@
 #'   databases to install.
 #' @return The path to the directory where the databases
 #'   were installed.
-#' @export
+#' @keyword internal
 install_db <- function(cwn_path = NULL, db_path = NULL,
                        install = c(cwn = TRUE, db = TRUE)) {
     if (is.null(cwn_path) & install[1]) {

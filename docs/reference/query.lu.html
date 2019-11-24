@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • lexicoR</title>
+<title>Query lexical databases — query.lu • lexicoR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Query lexical databases — query.lu" />
+
+<meta property="og:description" content="Query lexical databases" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -52,7 +55,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -115,78 +118,73 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Query lexical databases</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lopentu/lexicoR/blob/master/R/query.R'><code>R/query.R</code></a></small>
+    <div class="hidden name"><code>query.lu.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Query lexical databases</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="check_status.html">check_status()</a></code> </p>
-        </td>
-        <td><p>Request helpers</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="install_db.html">install_db()</a></code> </p>
-        </td>
-        <td><p>Install databases from local file paths or urls</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_cwn.html">load_cwn()</a></code> </p>
-        </td>
-        <td><p>Load CwnGraph from python</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_database.rda.html">load_database.rda()</a></code> </p>
-        </td>
-        <td><p>Load databases</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pttFreq.html">pttFreq()</a></code> </p>
-        </td>
-        <td><p>Query lemma frequencies on PTT</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="py_to_r.html">py_to_r()</a></code> </p>
-        </td>
-        <td><p>Reticulate alias</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="query.lu.html">query.lu()</a></code> </p>
-        </td>
-        <td><p>Query lexical databases</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>query.lu</span>(
+  <span class='no'>lu</span>,
+  <span class='kw'>isSimp</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>regex</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>db</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"deeplex"</span>, <span class='st'>"cld"</span>),
+  <span class='kw'>as_tibble</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>lu</th>
+      <td><p>A string. The lexical unit to be queried in the databases.</p></td>
+    </tr>
+    <tr>
+      <th>isSimp</th>
+      <td><p>Logical. Whether <code>lu</code> is in simplified Chinese.
+Defaults to <code>FALSE</code>, which treat <code>lu</code> as traditional Chinese.</p></td>
+    </tr>
+    <tr>
+      <th>regex</th>
+      <td><p>Logical. Whether to use a regular expression pattern in
+the argument <code>lu</code> for searching. Defaults to <code>FALSE</code>,
+which searches for exact matches.</p></td>
+    </tr>
+    <tr>
+      <th>db</th>
+      <td><p>Character. The databases to be searched. Currently only
+<code>deeplex</code> and <code>cld</code> (Chinese Lexical Database) are available.</p></td>
+    </tr>
+    <tr>
+      <th>as_tibble</th>
+      <td><p>Logical. Whether to convert the query results to
+a <code>tibble</code> (a special type of <code>data.frame</code> provided by
+the package <span class="pkg">tibble</span>). Defaults to <code>TRUE</code>, which makes the data
+frame printed out in the console to have a nicer look.</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A data frame (<code>tibble</code>).</p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 

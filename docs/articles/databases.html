@@ -94,13 +94,353 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(lexicoR)</a></code></pre></div>
-<div id="lexical-databases-stored-in-lexicor" class="section level2">
+<p><code>lexicoR</code> contains two lexical databases, <a href="http://dx.doi.org/10.6129%2fCJP.201909_61(3).0004">DeepLex</a> and <a href="http://www.chineselexicaldatabase.com">Chinese Lexical Database</a>. The function, <code><a href="../reference/query.lu.html">query.lu()</a></code>, can be used to query lexical entries in these databases.</p>
+<div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#lexical-databases-stored-in-lexicor" class="anchor"></a>Lexical databases stored in <code>lexicoR</code>
+<a href="#usage" class="anchor"></a>Usage</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/query.lu.html">query.lu</a></span>(<span class="st">"我"</span>, <span class="dt">regex =</span> <span class="ot">TRUE</span>, <span class="dt">isSimp =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 652 x 296</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;    lu_trad lu_simp cld.C1 cld.C123Backwar… cld.C123Backwar…</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;            &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1 我      我      我                   NA               NA</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2 小我    小我    小                   NA               NA</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3 外我    外我    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4 讀我    读我    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5 敵我    敌我    敌                   NA               NA</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6 我輩    我辈    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7 我軍    我军    我                   NA               NA</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8 我相    我相    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9 我倆    我俩    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10 給我    给我    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; # … with 642 more rows, and 291 more variables:</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; #   cld.C123ConditionalProbability &lt;dbl&gt;, cld.C123Entropy &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; #   cld.C12BackwardConditionalProbability &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; #   cld.C12BackwardEntropy &lt;dbl&gt;, cld.C12ConditionalProbability &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; #   cld.C12Entropy &lt;dbl&gt;, cld.C1BackwardConditionalProbability &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; #   cld.C1BackwardEntropy &lt;dbl&gt;, cld.C1ConditionalProbability &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; #   cld.C1Entropy &lt;dbl&gt;, cld.C1FamilyFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; #   cld.C1FamilySize &lt;int&gt;, cld.C1Frequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt; #   cld.C1FrequencyRaw &lt;int&gt;, cld.C1FrequencyRawSUBTL &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; #   cld.C1FrequencyRawWeibo &lt;int&gt;, cld.C1FrequencySUBTL &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; #   cld.C1FrequencyWeibo &lt;dbl&gt;, cld.C1Friends &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt; #   cld.C1FriendsFrequency &lt;dbl&gt;, cld.C1HomographsFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt; #   cld.C1HomographTokens &lt;int&gt;, cld.C1HomographTypes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; #   cld.C1HomophonesFrequency &lt;dbl&gt;, cld.C1HomophoneTokens &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt; #   cld.C1HomophoneTypes &lt;int&gt;, cld.C1InitialDiphoneFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt; #   cld.C1InitialPhonemeFrequency &lt;dbl&gt;, cld.C1IPA &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt; #   cld.C1MaxDiphoneFrequency &lt;dbl&gt;, cld.C1MaxPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt; #   cld.C1MeanDiphoneFrequency &lt;dbl&gt;, cld.C1MeanPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="co">#&gt; #   cld.C1MinDiphoneFrequency &lt;dbl&gt;, cld.C1MinPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt; #   cld.C1OLDPixels &lt;dbl&gt;, cld.C1Phonemes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; #   cld.C1PhonologicalFrequency &lt;dbl&gt;, cld.C1PhonologicalN &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt; #   cld.C1PictureSize &lt;int&gt;, cld.C1Pinyin &lt;chr&gt;, cld.C1Pixels &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co">#&gt; #   cld.C1PLD &lt;dbl&gt;, cld.C1PR &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb2-38" data-line-number="38"><span class="co">#&gt; #   cld.C1PRBackwardEnemiesFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt; #   cld.C1PRBackwardEnemiesTokens &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt; #   cld.C1PRBackwardEnemiesTypes &lt;int&gt;, cld.C1PREnemiesFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-41" data-line-number="41"><span class="co">#&gt; #   cld.C1PREnemiesTokens &lt;int&gt;, cld.C1PREnemiesTypes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-42" data-line-number="42"><span class="co">#&gt; #   cld.C1PRFamilySize &lt;int&gt;, cld.C1PRFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-43" data-line-number="43"><span class="co">#&gt; #   cld.C1PRFriends &lt;int&gt;, cld.C1PRFriendsFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-44" data-line-number="44"><span class="co">#&gt; #   cld.C1PRPinyin &lt;chr&gt;, cld.C1PRRegularity &lt;int&gt;, cld.C1PRStrokes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-45" data-line-number="45"><span class="co">#&gt; #   cld.C1RE &lt;dbl&gt;, cld.C1SR &lt;chr&gt;, cld.C1SRFamilySize &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt; #   cld.C1SRFrequency &lt;dbl&gt;, cld.C1SRStrokes &lt;int&gt;, cld.C1Strokes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt; #   cld.C1Structure &lt;fct&gt;, cld.C1Tone &lt;fct&gt;, cld.C1Type &lt;fct&gt;,</span></a>
+<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt; #   cld.C2 &lt;chr&gt;, cld.C2FamilyFrequency &lt;dbl&gt;, cld.C2FamilySize &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#&gt; #   cld.C2Frequency &lt;dbl&gt;, cld.C2FrequencyRaw &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-50" data-line-number="50"><span class="co">#&gt; #   cld.C2FrequencyRawSUBTL &lt;int&gt;, cld.C2FrequencyRawWeibo &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-51" data-line-number="51"><span class="co">#&gt; #   cld.C2FrequencySUBTL &lt;dbl&gt;, cld.C2FrequencyWeibo &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-52" data-line-number="52"><span class="co">#&gt; #   cld.C2Friends &lt;int&gt;, cld.C2FriendsFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-53" data-line-number="53"><span class="co">#&gt; #   cld.C2HomographsFrequency &lt;dbl&gt;, cld.C2HomographTokens &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-54" data-line-number="54"><span class="co">#&gt; #   cld.C2HomographTypes &lt;int&gt;, cld.C2HomophonesFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt; #   cld.C2HomophoneTokens &lt;int&gt;, cld.C2HomophoneTypes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; #   cld.C2InitialDiphoneFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt; #   cld.C2InitialPhonemeFrequency &lt;dbl&gt;, cld.C2IPA &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt; #   cld.C2MaxDiphoneFrequency &lt;dbl&gt;, cld.C2MaxPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; #   cld.C2MeanDiphoneFrequency &lt;dbl&gt;, cld.C2MeanPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt; #   cld.C2MinDiphoneFrequency &lt;dbl&gt;, cld.C2MinPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; #   cld.C2OLDPixels &lt;dbl&gt;, cld.C2Phonemes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt; #   cld.C2PhonologicalFrequency &lt;dbl&gt;, cld.C2PhonologicalN &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-63" data-line-number="63"><span class="co">#&gt; #   cld.C2PictureSize &lt;int&gt;, cld.C2Pinyin &lt;chr&gt;, cld.C2Pixels &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb2-64" data-line-number="64"><span class="co">#&gt; #   cld.C2PLD &lt;dbl&gt;, …</span></a></code></pre></div>
+<p>By default, <code><a href="../reference/query.lu.html">query.lu()</a></code> queries both databases. If you only want results from a particular database, you can provide an additional argument <code>db</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/query.lu.html">query.lu</a></span>(<span class="st">"我"</span>, <span class="dt">regex =</span> <span class="ot">TRUE</span>, <span class="dt">db =</span> <span class="st">"deeplex"</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 642 x 296</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;    lu_trad lu_simp cld.C1 cld.C123Backwar… cld.C123Backwar…</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;            &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;  1 我      我      我                   NA               NA</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;  2 小我    小我    小                   NA               NA</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;  3 外我    外我    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;  4 讀我    读我    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  5 敵我    敌我    敌                   NA               NA</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  6 我輩    我辈    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  7 我軍    我军    我                   NA               NA</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  8 我相    我相    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  9 我倆    我俩    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 10 給我    给我    &lt;NA&gt;                 NA               NA</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; # … with 632 more rows, and 291 more variables:</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; #   cld.C123ConditionalProbability &lt;dbl&gt;, cld.C123Entropy &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; #   cld.C12BackwardConditionalProbability &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; #   cld.C12BackwardEntropy &lt;dbl&gt;, cld.C12ConditionalProbability &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; #   cld.C12Entropy &lt;dbl&gt;, cld.C1BackwardConditionalProbability &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; #   cld.C1BackwardEntropy &lt;dbl&gt;, cld.C1ConditionalProbability &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; #   cld.C1Entropy &lt;dbl&gt;, cld.C1FamilyFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; #   cld.C1FamilySize &lt;int&gt;, cld.C1Frequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; #   cld.C1FrequencyRaw &lt;int&gt;, cld.C1FrequencyRawSUBTL &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; #   cld.C1FrequencyRawWeibo &lt;int&gt;, cld.C1FrequencySUBTL &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; #   cld.C1FrequencyWeibo &lt;dbl&gt;, cld.C1Friends &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; #   cld.C1FriendsFrequency &lt;dbl&gt;, cld.C1HomographsFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt; #   cld.C1HomographTokens &lt;int&gt;, cld.C1HomographTypes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt; #   cld.C1HomophonesFrequency &lt;dbl&gt;, cld.C1HomophoneTokens &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt; #   cld.C1HomophoneTypes &lt;int&gt;, cld.C1InitialDiphoneFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt; #   cld.C1InitialPhonemeFrequency &lt;dbl&gt;, cld.C1IPA &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt; #   cld.C1MaxDiphoneFrequency &lt;dbl&gt;, cld.C1MaxPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-32" data-line-number="32"><span class="co">#&gt; #   cld.C1MeanDiphoneFrequency &lt;dbl&gt;, cld.C1MeanPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-33" data-line-number="33"><span class="co">#&gt; #   cld.C1MinDiphoneFrequency &lt;dbl&gt;, cld.C1MinPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-34" data-line-number="34"><span class="co">#&gt; #   cld.C1OLDPixels &lt;dbl&gt;, cld.C1Phonemes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="co">#&gt; #   cld.C1PhonologicalFrequency &lt;dbl&gt;, cld.C1PhonologicalN &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-36" data-line-number="36"><span class="co">#&gt; #   cld.C1PictureSize &lt;int&gt;, cld.C1Pinyin &lt;chr&gt;, cld.C1Pixels &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-37" data-line-number="37"><span class="co">#&gt; #   cld.C1PLD &lt;dbl&gt;, cld.C1PR &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-38" data-line-number="38"><span class="co">#&gt; #   cld.C1PRBackwardEnemiesFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-39" data-line-number="39"><span class="co">#&gt; #   cld.C1PRBackwardEnemiesTokens &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-40" data-line-number="40"><span class="co">#&gt; #   cld.C1PRBackwardEnemiesTypes &lt;int&gt;, cld.C1PREnemiesFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt; #   cld.C1PREnemiesTokens &lt;int&gt;, cld.C1PREnemiesTypes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-42" data-line-number="42"><span class="co">#&gt; #   cld.C1PRFamilySize &lt;int&gt;, cld.C1PRFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-43" data-line-number="43"><span class="co">#&gt; #   cld.C1PRFriends &lt;int&gt;, cld.C1PRFriendsFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-44" data-line-number="44"><span class="co">#&gt; #   cld.C1PRPinyin &lt;chr&gt;, cld.C1PRRegularity &lt;int&gt;, cld.C1PRStrokes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-45" data-line-number="45"><span class="co">#&gt; #   cld.C1RE &lt;dbl&gt;, cld.C1SR &lt;chr&gt;, cld.C1SRFamilySize &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-46" data-line-number="46"><span class="co">#&gt; #   cld.C1SRFrequency &lt;dbl&gt;, cld.C1SRStrokes &lt;int&gt;, cld.C1Strokes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-47" data-line-number="47"><span class="co">#&gt; #   cld.C1Structure &lt;fct&gt;, cld.C1Tone &lt;fct&gt;, cld.C1Type &lt;fct&gt;,</span></a>
+<a class="sourceLine" id="cb3-48" data-line-number="48"><span class="co">#&gt; #   cld.C2 &lt;chr&gt;, cld.C2FamilyFrequency &lt;dbl&gt;, cld.C2FamilySize &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-49" data-line-number="49"><span class="co">#&gt; #   cld.C2Frequency &lt;dbl&gt;, cld.C2FrequencyRaw &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-50" data-line-number="50"><span class="co">#&gt; #   cld.C2FrequencyRawSUBTL &lt;int&gt;, cld.C2FrequencyRawWeibo &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-51" data-line-number="51"><span class="co">#&gt; #   cld.C2FrequencySUBTL &lt;dbl&gt;, cld.C2FrequencyWeibo &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-52" data-line-number="52"><span class="co">#&gt; #   cld.C2Friends &lt;int&gt;, cld.C2FriendsFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-53" data-line-number="53"><span class="co">#&gt; #   cld.C2HomographsFrequency &lt;dbl&gt;, cld.C2HomographTokens &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-54" data-line-number="54"><span class="co">#&gt; #   cld.C2HomographTypes &lt;int&gt;, cld.C2HomophonesFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-55" data-line-number="55"><span class="co">#&gt; #   cld.C2HomophoneTokens &lt;int&gt;, cld.C2HomophoneTypes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-56" data-line-number="56"><span class="co">#&gt; #   cld.C2InitialDiphoneFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-57" data-line-number="57"><span class="co">#&gt; #   cld.C2InitialPhonemeFrequency &lt;dbl&gt;, cld.C2IPA &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-58" data-line-number="58"><span class="co">#&gt; #   cld.C2MaxDiphoneFrequency &lt;dbl&gt;, cld.C2MaxPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-59" data-line-number="59"><span class="co">#&gt; #   cld.C2MeanDiphoneFrequency &lt;dbl&gt;, cld.C2MeanPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-60" data-line-number="60"><span class="co">#&gt; #   cld.C2MinDiphoneFrequency &lt;dbl&gt;, cld.C2MinPhonemeFrequency &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb3-61" data-line-number="61"><span class="co">#&gt; #   cld.C2OLDPixels &lt;dbl&gt;, cld.C2Phonemes &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-62" data-line-number="62"><span class="co">#&gt; #   cld.C2PhonologicalFrequency &lt;dbl&gt;, cld.C2PhonologicalN &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-63" data-line-number="63"><span class="co">#&gt; #   cld.C2PictureSize &lt;int&gt;, cld.C2Pinyin &lt;chr&gt;, cld.C2Pixels &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-64" data-line-number="64"><span class="co">#&gt; #   cld.C2PLD &lt;dbl&gt;, …</span></a></code></pre></div>
+<p>When calling <code><a href="../reference/query.lu.html">query.lu()</a></code> for the first time, the databases (<code>deeplex</code> &amp; <code>cld</code>) would be loaded into the global environment. These databases are stored as regular data frames. You can access it directly:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(cld)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; 'data.frame':    50549 obs. of  295 variables:</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;  $ lu_trad                               : chr  "中東" "馬隊" "門徒" "申討" ...</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;  $ lu_simp                               : chr  "中东" "马队" "门徒" "申讨" ...</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;  $ cld.C1                                : chr  "中" "马" "门" "申" ...</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  $ cld.C123BackwardConditionalProbability: num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;  $ cld.C123BackwardEntropy               : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;  $ cld.C123ConditionalProbability        : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;  $ cld.C123Entropy                       : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;  $ cld.C12BackwardConditionalProbability : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  $ cld.C12BackwardEntropy                : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  $ cld.C12ConditionalProbability         : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  $ cld.C12Entropy                        : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;  $ cld.C1BackwardConditionalProbability  : num  0.043024 0.000951 0.25563 0.002027 NA ...</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;  $ cld.C1BackwardEntropy                 : num  2.8 3.56 3.37 2.16 NA ...</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  $ cld.C1ConditionalProbability          : num  0.003038 0.000725 0.087427 0.000572 NA ...</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;  $ cld.C1Entropy                         : num  3.933 2.036 3.643 0.722 NA ...</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;  $ cld.C1FamilyFrequency                 : num  1408.6 471.3 724 56.2 188.3 ...</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;  $ cld.C1FamilySize                      : int  245 171 195 18 66 66 66 66 103 3 ...</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;  $ cld.C1Frequency                       : num  2433 762 671 74 184 ...</span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;  $ cld.C1FrequencyRaw                    : int  492621 154252 135973 14987 37187 37187 37187 37187 104370 69 ...</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;  $ cld.C1FrequencyRawSUBTL               : int  69745 34892 25908 2358 5121 5121 5121 5121 13220 15 ...</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;  $ cld.C1FrequencyRawWeibo               : int  422876 119360 110065 12629 32066 32066 32066 32066 91150 54 ...</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt;  $ cld.C1FrequencySUBTL                  : num  1490.3 745.6 553.6 50.4 109.4 ...</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt;  $ cld.C1FrequencyWeibo                  : num  2716 766.6 706.9 81.1 205.9 ...</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt;  $ cld.C1Friends                         : int  223 171 194 18 46 46 46 46 103 2 ...</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt;  $ cld.C1FriendsFrequency                : num  3187 570 856 58 153 ...</span></a>
+<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt;  $ cld.C1HomographsFrequency             : num  135.33 1.394 0.563 0 36.257 ...</span></a>
+<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt;  $ cld.C1HomographTokens                 : int  22 1 1 0 22 22 22 22 0 0 ...</span></a>
+<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt;  $ cld.C1HomographTypes                  : int  1 1 1 0 1 1 1 1 0 0 ...</span></a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt;  $ cld.C1HomophonesFrequency             : num  1606 285 48 2176 1398 ...</span></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt;  $ cld.C1HomophoneTokens                 : int  116 37 3 289 94 94 94 94 4 0 ...</span></a>
+<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt;  $ cld.C1HomophoneTypes                  : int  5 5 1 9 3 3 3 3 2 0 ...</span></a>
+<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt;  $ cld.C1InitialDiphoneFrequency         : num  7635 10522 10153 14074 7703 ...</span></a>
+<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt;  $ cld.C1InitialPhonemeFrequency         : num  62190 51733 51733 89637 36220 ...</span></a>
+<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt;  $ cld.C1IPA                             : chr  "ʈʂʊŋ1" "ma3" "mən2" "ʂən1" ...</span></a>
+<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt;  $ cld.C1MaxDiphoneFrequency             : num  30825 10522 59561 59561 7703 ...</span></a>
+<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt;  $ cld.C1MaxPhonemeFrequency             : num  149471 321279 231563 231563 36220 ...</span></a>
+<a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt;  $ cld.C1MeanDiphoneFrequency            : num  19230 10522 34857 36818 7703 ...</span></a>
+<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">#&gt;  $ cld.C1MeanPhonemeFrequency            : num  80829 186506 124276 136911 31644 ...</span></a>
+<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">#&gt;  $ cld.C1MinDiphoneFrequency             : num  7635 10522 10153 14074 7703 ...</span></a>
+<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="co">#&gt;  $ cld.C1MinPhonemeFrequency             : num  30825 51733 51733 89533 27067 ...</span></a>
+<a class="sourceLine" id="cb4-43" data-line-number="43"><span class="co">#&gt;  $ cld.C1OLDPixels                       : num  2002 2602 1875 2081 2438 ...</span></a>
+<a class="sourceLine" id="cb4-44" data-line-number="44"><span class="co">#&gt;  $ cld.C1Phonemes                        : int  3 2 3 3 2 2 2 2 3 3 ...</span></a>
+<a class="sourceLine" id="cb4-45" data-line-number="45"><span class="co">#&gt;  $ cld.C1PhonologicalFrequency           : num  4796 856 913 2234 1582 ...</span></a>
+<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co">#&gt;  $ cld.C1PhonologicalN                   : int  15 21 15 15 9 9 9 9 6 24 ...</span></a>
+<a class="sourceLine" id="cb4-47" data-line-number="47"><span class="co">#&gt;  $ cld.C1PictureSize                     : int  1058 1875 1515 1225 1245 1245 1245 1245 2737 3726 ...</span></a>
+<a class="sourceLine" id="cb4-48" data-line-number="48"><span class="co">#&gt;  $ cld.C1Pinyin                          : chr  "zhong1" "ma3" "men2" "shen1" ...</span></a>
+<a class="sourceLine" id="cb4-49" data-line-number="49"><span class="co">#&gt;  $ cld.C1Pixels                          : int  2623 2835 2160 3379 3641 3641 3641 3641 3975 4548 ...</span></a>
+<a class="sourceLine" id="cb4-50" data-line-number="50"><span class="co">#&gt;  $ cld.C1PLD                             : num  1.25 1 1.25 1.2 1.5 1.5 1.5 1.5 1.65 1 ...</span></a>
+<a class="sourceLine" id="cb4-51" data-line-number="51"><span class="co">#&gt;  $ cld.C1PR                              : chr  NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-52" data-line-number="52"><span class="co">#&gt;  $ cld.C1PRBackwardEnemiesFrequency      : num  NA NA NA NA NA NA NA NA NA 0 ...</span></a>
+<a class="sourceLine" id="cb4-53" data-line-number="53"><span class="co">#&gt;  $ cld.C1PRBackwardEnemiesTokens         : int  NA NA NA NA NA NA NA NA NA 0 ...</span></a>
+<a class="sourceLine" id="cb4-54" data-line-number="54"><span class="co">#&gt;  $ cld.C1PRBackwardEnemiesTypes          : int  NA NA NA NA NA NA NA NA NA 0 ...</span></a>
+<a class="sourceLine" id="cb4-55" data-line-number="55"><span class="co">#&gt;  $ cld.C1PREnemiesFrequency              : num  NA NA NA NA NA NA NA NA NA 0 ...</span></a>
+<a class="sourceLine" id="cb4-56" data-line-number="56"><span class="co">#&gt;  $ cld.C1PREnemiesTokens                 : int  NA NA NA NA NA NA NA NA NA 0 ...</span></a>
+<a class="sourceLine" id="cb4-57" data-line-number="57"><span class="co">#&gt;  $ cld.C1PREnemiesTypes                  : int  NA NA NA NA NA NA NA NA NA 0 ...</span></a>
+<a class="sourceLine" id="cb4-58" data-line-number="58"><span class="co">#&gt;  $ cld.C1PRFamilySize                    : int  NA NA NA NA NA NA NA NA NA 1 ...</span></a>
+<a class="sourceLine" id="cb4-59" data-line-number="59"><span class="co">#&gt;  $ cld.C1PRFrequency                     : num  NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-60" data-line-number="60"><span class="co">#&gt;  $ cld.C1PRFriends                       : int  NA NA NA NA NA NA NA NA NA 2 ...</span></a>
+<a class="sourceLine" id="cb4-61" data-line-number="61"><span class="co">#&gt;  $ cld.C1PRFriendsFrequency              : num  NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-62" data-line-number="62"><span class="co">#&gt;  $ cld.C1PRPinyin                        : chr  NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb4-63" data-line-number="63"><span class="co">#&gt;  $ cld.C1PRRegularity                    : int  NA NA NA NA NA NA NA NA NA 0 ...</span></a>
+<a class="sourceLine" id="cb4-64" data-line-number="64"><span class="co">#&gt;  $ cld.C1PRStrokes                       : int  NA NA NA NA NA NA NA NA NA 12 ...</span></a>
+<a class="sourceLine" id="cb4-65" data-line-number="65"><span class="co">#&gt;  $ cld.C1RE                              : num  5.2 5.44 4.31 4.88 NA ...</span></a>
+<a class="sourceLine" id="cb4-66" data-line-number="66"><span class="co">#&gt;  $ cld.C1SR                              : chr  "丨" "马" "门" "田" ...</span></a>
+<a class="sourceLine" id="cb4-67" data-line-number="67"><span class="co">#&gt;  $ cld.C1SRFamilySize                    : int  6 34 28 22 9 9 9 9 10 56 ...</span></a>
+<a class="sourceLine" id="cb4-68" data-line-number="68"><span class="co">#&gt;  $ cld.C1SRFrequency                     : num  10275 1869 3882 4157 4287 ...</span></a>
+<a class="sourceLine" id="cb4-69" data-line-number="69"><span class="co">#&gt;  $ cld.C1SRStrokes                       : int  1 3 3 5 4 4 4 4 12 6 ...</span></a>
+<a class="sourceLine" id="cb4-70" data-line-number="70"><span class="co">#&gt;  $ cld.C1Strokes                         : int  4 3 3 5 6 6 6 6 12 18 ...</span></a>
+<a class="sourceLine" id="cb4-71" data-line-number="71"><span class="co">#&gt;  $ cld.C1Structure                       : Factor w/ 6 levels "CIR","HCI","LR",..: 5 5 5 5 5 5 5 5 6 6 ...</span></a>
+<a class="sourceLine" id="cb4-72" data-line-number="72"><span class="co">#&gt;  $ cld.C1Tone                            : Factor w/ 5 levels "1","2","3","4",..: 1 3 2 1 3 3 3 3 1 1 ...</span></a>
+<a class="sourceLine" id="cb4-73" data-line-number="73"><span class="co">#&gt;  $ cld.C1Type                            : Factor w/ 5 levels "Other","PicLog",..: 2 5 5 2 5 5 5 5 4 3 ...</span></a>
+<a class="sourceLine" id="cb4-74" data-line-number="74"><span class="co">#&gt;  $ cld.C2                                : chr  "东" "队" "徒" "讨" ...</span></a>
+<a class="sourceLine" id="cb4-75" data-line-number="75"><span class="co">#&gt;  $ cld.C2FamilyFrequency                 : num  979 315 66 288 NA ...</span></a>
+<a class="sourceLine" id="cb4-76" data-line-number="76"><span class="co">#&gt;  $ cld.C2FamilySize                      : int  101 105 37 25 NA NA NA NA 34 699 ...</span></a>
+<a class="sourceLine" id="cb4-77" data-line-number="77"><span class="co">#&gt;  $ cld.C2Frequency                       : num  805.9 286.7 51.8 209.7 NA ...</span></a>
+<a class="sourceLine" id="cb4-78" data-line-number="78"><span class="co">#&gt;  $ cld.C2FrequencyRaw                    : int  163202 58066 10498 42457 NA NA NA NA 10718 664892 ...</span></a>
+<a class="sourceLine" id="cb4-79" data-line-number="79"><span class="co">#&gt;  $ cld.C2FrequencyRawSUBTL               : int  44037 27111 3604 10151 NA NA NA NA 2997 177693 ...</span></a>
+<a class="sourceLine" id="cb4-80" data-line-number="80"><span class="co">#&gt;  $ cld.C2FrequencyRawWeibo               : int  119165 30955 6894 32306 NA NA NA NA 7721 487199 ...</span></a>
+<a class="sourceLine" id="cb4-81" data-line-number="81"><span class="co">#&gt;  $ cld.C2FrequencySUBTL                  : num  941 579 77 217 NA ...</span></a>
+<a class="sourceLine" id="cb4-82" data-line-number="82"><span class="co">#&gt;  $ cld.C2FrequencyWeibo                  : num  765.4 198.8 44.3 207.5 NA ...</span></a>
+<a class="sourceLine" id="cb4-83" data-line-number="83"><span class="co">#&gt;  $ cld.C2Friends                         : int  101 105 37 25 NA NA NA NA 33 515 ...</span></a>
+<a class="sourceLine" id="cb4-84" data-line-number="84"><span class="co">#&gt;  $ cld.C2FriendsFrequency                : num  1017.5 388.2 57.9 298.6 NA ...</span></a>
+<a class="sourceLine" id="cb4-85" data-line-number="85"><span class="co">#&gt;  $ cld.C2HomographsFrequency             : num  0 0 0 0 NA ...</span></a>
+<a class="sourceLine" id="cb4-86" data-line-number="86"><span class="co">#&gt;  $ cld.C2HomographTokens                 : int  0 0 0 0 NA NA NA NA 2 185 ...</span></a>
+<a class="sourceLine" id="cb4-87" data-line-number="87"><span class="co">#&gt;  $ cld.C2HomographTypes                  : int  0 0 0 0 NA NA NA NA 1 1 ...</span></a>
+<a class="sourceLine" id="cb4-88" data-line-number="88"><span class="co">#&gt;  $ cld.C2HomophonesFrequency             : num  300 3485 1221 0 NA ...</span></a>
+<a class="sourceLine" id="cb4-89" data-line-number="89"><span class="co">#&gt;  $ cld.C2HomophoneTokens                 : int  47 122 147 0 NA NA NA NA 274 1 ...</span></a>
+<a class="sourceLine" id="cb4-90" data-line-number="90"><span class="co">#&gt;  $ cld.C2HomophoneTypes                  : int  4 3 5 0 NA NA NA NA 5 1 ...</span></a>
+<a class="sourceLine" id="cb4-91" data-line-number="91"><span class="co">#&gt;  $ cld.C2InitialDiphoneFrequency         : num  3881 9448 2020 16354 NA ...</span></a>
+<a class="sourceLine" id="cb4-92" data-line-number="92"><span class="co">#&gt;  $ cld.C2InitialPhonemeFrequency         : num  122891 122891 42095 42095 NA ...</span></a>
+<a class="sourceLine" id="cb4-93" data-line-number="93"><span class="co">#&gt;  $ cld.C2IPA                             : chr  "tʊŋ1" "twei4" "tʰu2" "tʰau3" ...</span></a>
+<a class="sourceLine" id="cb4-94" data-line-number="94"><span class="co">#&gt;  $ cld.C2MaxDiphoneFrequency             : num  30825 60592 2020 70492 NA ...</span></a>
+<a class="sourceLine" id="cb4-95" data-line-number="95"><span class="co">#&gt;  $ cld.C2MaxPhonemeFrequency             : num  149471 283816 192765 321279 NA ...</span></a>
+<a class="sourceLine" id="cb4-96" data-line-number="96"><span class="co">#&gt;  $ cld.C2MeanDiphoneFrequency            : num  17353 36106 2020 43423 NA ...</span></a>
+<a class="sourceLine" id="cb4-97" data-line-number="97"><span class="co">#&gt;  $ cld.C2MeanPhonemeFrequency            : num  101062 165116 117430 185380 NA ...</span></a>
+<a class="sourceLine" id="cb4-98" data-line-number="98"><span class="co">#&gt;  $ cld.C2MinDiphoneFrequency             : num  3881 9448 2020 16354 NA ...</span></a>
+<a class="sourceLine" id="cb4-99" data-line-number="99"><span class="co">#&gt;  $ cld.C2MinPhonemeFrequency             : num  30825 91491 42095 42095 NA ...</span></a>
+<a class="sourceLine" id="cb4-100" data-line-number="100"><span class="co">#&gt;  $ cld.C2OLDPixels                       : num  2387 2521 2478 2241 NA ...</span></a>
+<a class="sourceLine" id="cb4-101" data-line-number="101"><span class="co">#&gt;  $ cld.C2Phonemes                        : int  3 4 2 3 NA NA NA NA 3 2 ...</span></a>
+<a class="sourceLine" id="cb4-102" data-line-number="102"><span class="co">#&gt;   [list output truncated]</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(deeplex)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; 'data.frame':    317699 obs. of  296 variables:</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;  $ lu_trad                               : chr  "節" "筋" "破" "祈" ...</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;  $ lu_simp                               : chr  "节" "筋" "破" "祈" ...</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;  $ cld.C1                                : chr  "节" "筋" "破" "祈" ...</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;  $ cld.C123BackwardConditionalProbability: num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  $ cld.C123BackwardEntropy               : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;  $ cld.C123ConditionalProbability        : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  $ cld.C123Entropy                       : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;  $ cld.C12BackwardConditionalProbability : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  $ cld.C12BackwardEntropy                : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  $ cld.C12ConditionalProbability         : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  $ cld.C12Entropy                        : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  $ cld.C1BackwardConditionalProbability  : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;  $ cld.C1BackwardEntropy                 : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;  $ cld.C1ConditionalProbability          : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;  $ cld.C1Entropy                         : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;  $ cld.C1FamilyFrequency                 : num  901 25.8 183.7 66.9 308.5 ...</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  $ cld.C1FamilySize                      : int  98 16 75 6 24 56 34 9 26 309 ...</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;  $ cld.C1Frequency                       : num  664.2 26.2 208.8 48 245.5 ...</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt;  $ cld.C1FrequencyRaw                    : int  134503 5311 42283 9724 49720 71606 330995 5221 15582 546473 ...</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;  $ cld.C1FrequencyRawSUBTL               : int  17377 728 10541 2293 9589 6381 50512 990 1386 87630 ...</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;  $ cld.C1FrequencyRawWeibo               : int  117126 4583 31742 7431 40131 65225 280483 4231 14196 458843 ...</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;  $ cld.C1FrequencySUBTL                  : num  371.3 15.6 225.2 49 204.9 ...</span></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  $ cld.C1FrequencyWeibo                  : num  752.3 29.4 203.9 47.7 257.7 ...</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  $ cld.C1Friends                         : int  97 16 76 6 24 57 34 8 26 58 ...</span></a>
+<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  $ cld.C1FriendsFrequency                : num  900.5 25.8 183.8 66.9 308.5 ...</span></a>
+<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt;  $ cld.C1HomographsFrequency             : num  0.467 0 0 0 0 ...</span></a>
+<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt;  $ cld.C1HomographTokens                 : int  1 0 0 0 0 0 0 3 0 251 ...</span></a>
+<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt;  $ cld.C1HomographTypes                  : int  1 0 0 0 0 0 0 2 0 1 ...</span></a>
+<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="co">#&gt;  $ cld.C1HomophonesFrequency             : num  1425.6 4065.2 91.4 1660.9 499.9 ...</span></a>
+<a class="sourceLine" id="cb5-32" data-line-number="32"><span class="co">#&gt;  $ cld.C1HomophoneTokens                 : int  220 299 33 251 103 15 30 0 8 2 ...</span></a>
+<a class="sourceLine" id="cb5-33" data-line-number="33"><span class="co">#&gt;  $ cld.C1HomophoneTypes                  : int  14 9 4 21 11 2 6 0 4 1 ...</span></a>
+<a class="sourceLine" id="cb5-34" data-line-number="34"><span class="co">#&gt;  $ cld.C1InitialDiphoneFrequency         : num  39133 26485 687 17006 33764 ...</span></a>
+<a class="sourceLine" id="cb5-35" data-line-number="35"><span class="co">#&gt;  $ cld.C1InitialPhonemeFrequency         : num  71647 71647 13649 36220 283816 ...</span></a>
+<a class="sourceLine" id="cb5-36" data-line-number="36"><span class="co">#&gt;  $ cld.C1IPA                             : chr  "tɕje2" "tɕin1" "pʰwo4" "tɕʰi2" ...</span></a>
+<a class="sourceLine" id="cb5-37" data-line-number="37"><span class="co">#&gt;  $ cld.C1MaxDiphoneFrequency             : num  39133 26542 81826 17006 33764 ...</span></a>
+<a class="sourceLine" id="cb5-38" data-line-number="38"><span class="co">#&gt;  $ cld.C1MaxPhonemeFrequency             : num  175419 283816 162267 283816 283816 ...</span></a>
+<a class="sourceLine" id="cb5-39" data-line-number="39"><span class="co">#&gt;  $ cld.C1MeanDiphoneFrequency            : num  26879 26514 41256 17006 33764 ...</span></a>
+<a class="sourceLine" id="cb5-40" data-line-number="40"><span class="co">#&gt;  $ cld.C1MeanPhonemeFrequency            : num  112852 195675 106842 160018 216643 ...</span></a>
+<a class="sourceLine" id="cb5-41" data-line-number="41"><span class="co">#&gt;  $ cld.C1MinDiphoneFrequency             : num  14624 26485 687 17006 33764 ...</span></a>
+<a class="sourceLine" id="cb5-42" data-line-number="42"><span class="co">#&gt;  $ cld.C1MinPhonemeFrequency             : num  71647 71647 13649 36220 149471 ...</span></a>
+<a class="sourceLine" id="cb5-43" data-line-number="43"><span class="co">#&gt;  $ cld.C1OLDPixels                       : num  2560 2895 2563 2461 2384 ...</span></a>
+<a class="sourceLine" id="cb5-44" data-line-number="44"><span class="co">#&gt;  $ cld.C1Phonemes                        : int  3 3 3 2 2 4 3 4 3 2 ...</span></a>
+<a class="sourceLine" id="cb5-45" data-line-number="45"><span class="co">#&gt;  $ cld.C1PhonologicalFrequency           : num  2372 4092 360 1728 857 ...</span></a>
+<a class="sourceLine" id="cb5-46" data-line-number="46"><span class="co">#&gt;  $ cld.C1PhonologicalN                   : int  10 9 17 15 6 8 24 9 13 18 ...</span></a>
+<a class="sourceLine" id="cb5-47" data-line-number="47"><span class="co">#&gt;  $ cld.C1PictureSize                     : int  1693 3720 3730 3372 3069 3840 3145 2612 3639 3577 ...</span></a>
+<a class="sourceLine" id="cb5-48" data-line-number="48"><span class="co">#&gt;  $ cld.C1Pinyin                          : chr  "jie2" "jin1" "po4" "qi2" ...</span></a>
+<a class="sourceLine" id="cb5-49" data-line-number="49"><span class="co">#&gt;  $ cld.C1Pixels                          : int  2801 4279 4103 3286 3682 3590 4077 3803 4153 3352 ...</span></a>
+<a class="sourceLine" id="cb5-50" data-line-number="50"><span class="co">#&gt;  $ cld.C1PLD                             : num  1.5 1.45 1.1 1.1 1.3 1.45 1 1.4 1.35 1 ...</span></a>
+<a class="sourceLine" id="cb5-51" data-line-number="51"><span class="co">#&gt;  $ cld.C1PR                              : chr  "卩" NA "皮" "斤" ...</span></a>
+<a class="sourceLine" id="cb5-52" data-line-number="52"><span class="co">#&gt;  $ cld.C1PRBackwardEnemiesFrequency      : num  1322.36 NA 91.4 575.95 1.52 ...</span></a>
+<a class="sourceLine" id="cb5-53" data-line-number="53"><span class="co">#&gt;  $ cld.C1PRBackwardEnemiesTokens         : int  166 NA 33 150 10 NA 23 0 5 NA ...</span></a>
+<a class="sourceLine" id="cb5-54" data-line-number="54"><span class="co">#&gt;  $ cld.C1PRBackwardEnemiesTypes          : int  9 NA 3 23 4 NA 4 1 4 NA ...</span></a>
+<a class="sourceLine" id="cb5-55" data-line-number="55"><span class="co">#&gt;  $ cld.C1PREnemiesFrequency              : num  233.8 NA 2120.4 3905.6 69.4 ...</span></a>
+<a class="sourceLine" id="cb5-56" data-line-number="56"><span class="co">#&gt;  $ cld.C1PREnemiesTokens                 : int  33 NA 154 258 36 NA 14 15 0 NA ...</span></a>
+<a class="sourceLine" id="cb5-57" data-line-number="57"><span class="co">#&gt;  $ cld.C1PREnemiesTypes                  : int  4 NA 8 6 2 NA 2 3 0 NA ...</span></a>
+<a class="sourceLine" id="cb5-58" data-line-number="58"><span class="co">#&gt;  $ cld.C1PRFamilySize                    : int  4 NA 11 8 3 NA 5 4 3 NA ...</span></a>
+<a class="sourceLine" id="cb5-59" data-line-number="59"><span class="co">#&gt;  $ cld.C1PRFrequency                     : num  824 NA 1763 2764 306 ...</span></a>
+<a class="sourceLine" id="cb5-60" data-line-number="60"><span class="co">#&gt;  $ cld.C1PRFriends                       : int  97 NA 76 7 24 NA 41 8 29 NA ...</span></a>
+<a class="sourceLine" id="cb5-61" data-line-number="61"><span class="co">#&gt;  $ cld.C1PRFriendsFrequency              : num  900.5 NA 183.8 66.9 308.5 ...</span></a>
+<a class="sourceLine" id="cb5-62" data-line-number="62"><span class="co">#&gt;  $ cld.C1PRPinyin                        : chr  "jie2" NA "pi2" "jin1" ...</span></a>
+<a class="sourceLine" id="cb5-63" data-line-number="63"><span class="co">#&gt;  $ cld.C1PRRegularity                    : int  1 NA 0 0 0 NA 0 0 0 NA ...</span></a>
+<a class="sourceLine" id="cb5-64" data-line-number="64"><span class="co">#&gt;  $ cld.C1PRStrokes                       : int  2 NA 5 4 4 NA 7 6 8 NA ...</span></a>
+<a class="sourceLine" id="cb5-65" data-line-number="65"><span class="co">#&gt;  $ cld.C1RE                              : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-66" data-line-number="66"><span class="co">#&gt;  $ cld.C1SR                              : chr  "艹" "⺮" "石" "礻" ...</span></a>
+<a class="sourceLine" id="cb5-67" data-line-number="67"><span class="co">#&gt;  $ cld.C1SRFamilySize                    : int  191 56 61 25 81 15 72 72 39 15 ...</span></a>
+<a class="sourceLine" id="cb5-68" data-line-number="68"><span class="co">#&gt;  $ cld.C1SRFrequency                     : num  9165 5915 1851 4131 28384 ...</span></a>
+<a class="sourceLine" id="cb5-69" data-line-number="69"><span class="co">#&gt;  $ cld.C1SRStrokes                       : int  3 6 5 5 3 2 4 4 3 2 ...</span></a>
+<a class="sourceLine" id="cb5-70" data-line-number="70"><span class="co">#&gt;  $ cld.C1Strokes                         : int  5 12 10 9 7 4 11 10 11 5 ...</span></a>
+<a class="sourceLine" id="cb5-71" data-line-number="71"><span class="co">#&gt;  $ cld.C1Structure                       : Factor w/ 6 levels "CIR","HCI","LR",..: 6 6 3 3 4 3 3 6 3 5 ...</span></a>
+<a class="sourceLine" id="cb5-72" data-line-number="72"><span class="co">#&gt;  $ cld.C1Tone                            : Factor w/ 5 levels "1","2","3","4",..: 2 1 4 2 2 1 3 4 3 4 ...</span></a>
+<a class="sourceLine" id="cb5-73" data-line-number="73"><span class="co">#&gt;  $ cld.C1Type                            : Factor w/ 5 levels "Other","PicLog",..: 3 4 3 3 3 4 3 3 3 1 ...</span></a>
+<a class="sourceLine" id="cb5-74" data-line-number="74"><span class="co">#&gt;  $ cld.C2                                : chr  NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-75" data-line-number="75"><span class="co">#&gt;  $ cld.C2FamilyFrequency                 : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-76" data-line-number="76"><span class="co">#&gt;  $ cld.C2FamilySize                      : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-77" data-line-number="77"><span class="co">#&gt;  $ cld.C2Frequency                       : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-78" data-line-number="78"><span class="co">#&gt;  $ cld.C2FrequencyRaw                    : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-79" data-line-number="79"><span class="co">#&gt;  $ cld.C2FrequencyRawSUBTL               : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-80" data-line-number="80"><span class="co">#&gt;  $ cld.C2FrequencyRawWeibo               : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-81" data-line-number="81"><span class="co">#&gt;  $ cld.C2FrequencySUBTL                  : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-82" data-line-number="82"><span class="co">#&gt;  $ cld.C2FrequencyWeibo                  : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-83" data-line-number="83"><span class="co">#&gt;  $ cld.C2Friends                         : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-84" data-line-number="84"><span class="co">#&gt;  $ cld.C2FriendsFrequency                : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-85" data-line-number="85"><span class="co">#&gt;  $ cld.C2HomographsFrequency             : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-86" data-line-number="86"><span class="co">#&gt;  $ cld.C2HomographTokens                 : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-87" data-line-number="87"><span class="co">#&gt;  $ cld.C2HomographTypes                  : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-88" data-line-number="88"><span class="co">#&gt;  $ cld.C2HomophonesFrequency             : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-89" data-line-number="89"><span class="co">#&gt;  $ cld.C2HomophoneTokens                 : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-90" data-line-number="90"><span class="co">#&gt;  $ cld.C2HomophoneTypes                  : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-91" data-line-number="91"><span class="co">#&gt;  $ cld.C2InitialDiphoneFrequency         : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-92" data-line-number="92"><span class="co">#&gt;  $ cld.C2InitialPhonemeFrequency         : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-93" data-line-number="93"><span class="co">#&gt;  $ cld.C2IPA                             : chr  NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-94" data-line-number="94"><span class="co">#&gt;  $ cld.C2MaxDiphoneFrequency             : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-95" data-line-number="95"><span class="co">#&gt;  $ cld.C2MaxPhonemeFrequency             : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-96" data-line-number="96"><span class="co">#&gt;  $ cld.C2MeanDiphoneFrequency            : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-97" data-line-number="97"><span class="co">#&gt;  $ cld.C2MeanPhonemeFrequency            : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-98" data-line-number="98"><span class="co">#&gt;  $ cld.C2MinDiphoneFrequency             : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-99" data-line-number="99"><span class="co">#&gt;  $ cld.C2MinPhonemeFrequency             : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-100" data-line-number="100"><span class="co">#&gt;  $ cld.C2OLDPixels                       : num  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-101" data-line-number="101"><span class="co">#&gt;  $ cld.C2Phonemes                        : int  NA NA NA NA NA NA NA NA NA NA ...</span></a>
+<a class="sourceLine" id="cb5-102" data-line-number="102"><span class="co">#&gt;   [list output truncated]</span></a></code></pre></div>
+</div>
+<div id="lexical-databases-in-lexicor" class="section level2">
+<h2 class="hasAnchor">
+<a href="#lexical-databases-in-lexicor" class="anchor"></a>Lexical databases in <code>lexicoR</code>
 </h2>
-<p><code>lexicoR</code> contains two lexical databases, <a href="http://dx.doi.org/10.6129%2fCJP.201909_61(3).0004">DeepLex</a> and <a href="http://www.chineselexicaldatabase.com">Chinese Lexical Database</a></p>
+<p>The two databases, <code>deeplex</code> &amp; <code>cld</code>, were preprocessed and left-joined together respectively, before bundling to the package. Hence, they have identical variables, with the source database’s name (<code>cld.</code>, <code>cwn.</code>, or <code>dl.</code>) prepended to the variables’ names.</p>
+<p>The variable <code>cwn.n_sense</code> records the number of senses of a lemma that can be found in Chinese Wordnet. There are only about 4,500 lemmas in Chinese Wordnet, which is few compared to DeepLex and Chinese Lexical Database, hence many entries in <code>cwn.n_sense</code> is <code>NA</code>. The venn diagram below shows the number of overlapping and distinct lexical entries found in the three lexical databases.</p>
 <div class="figure">
-<img src="cld_deeplex_cwn.png" alt="The numbers of lexical entries in DeepLex, Chinese Lexical Database, and Chinese Wordnet" class="half"><p class="caption">The numbers of lexical entries in DeepLex, Chinese Lexical Database, and Chinese Wordnet</p>
+<img src="cld_deeplex_cwn.png" alt="The numbers of overlapping and distinct lexical entries in DeepLex, Chinese Lexical Database, and Chinese Wordnet" class="half"><p class="caption">The numbers of overlapping and distinct lexical entries in DeepLex, Chinese Lexical Database, and Chinese Wordnet</p>
 </div>
 </div>
   </div>
@@ -110,7 +450,8 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#lexical-databases-stored-in-lexicor">Lexical databases stored in <code>lexicoR</code></a></li>
+<li><a href="#usage">Usage</a></li>
+      <li><a href="#lexical-databases-in-lexicor">Lexical databases in <code>lexicoR</code></a></li>
       </ul>
 </div>
       </div>

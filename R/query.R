@@ -1,10 +1,55 @@
-#' Query lexical data stored in local databases.
+#' Query lemma frequencies on PTT
 #'
-#' @param query A string. A string that matches the words (or lexical units)
-#'   in the databases.
+#' @param lemma A string. The lemma to be queried on PTT.
+#' @param board A string. The board on PTT to search for.
+#' @param year Integer. The year to search for.
+#' @return A list with each element specifying the frequency of
+#'   occurrence of the lemma with a particular Part-Of-Speech tag.
+#' @export
+pttFreq <- function(lemma, board, year = 2019) {
+    baseURL <- 'http://140.112.147.125:8976/'
+
+    # Get ptt available boards
+    if (is.null(getOption("pttAvailBoards"))) {
+        req <- httr::GET(baseURL, path = 'available_boards')
+        check_status(req)
+        # Save available PTT boards in `getOption("pttAvailBoards")`
+        options(pttAvailBoards = unlist(httr::content(req)))
+    }
+    availBoards <- getOption("pttAvailBoards")
+    # Check if board is available
+    if (!board %in% availBoards) {
+        warning("`", board, "` not available.\n\n",
+                "Only the following boards are available:\n",
+                paste(availBoards, collapse = ', '))
+        return(NULL)
+    }
+
+    # Query data from server
+    req <- httr::GET(baseURL, path = "query",
+                     query = list(lemma = lemma,
+                                  board = board,
+                                  year = year)
+                     )
+    check_status(req)
+
+    # Parse results
+    data <- httr::content(req)
+    if (data$result == 0) {
+        message('Queried data not found in the database.')
+        return(NULL)
+    }
+    return(data$freq)
+}
+
+#' Query lexical databases
+#'
+#' @param lu A string. The lexical unit to be queried in the databases.
+#' @param isSimp Logical. Whether \code{lu} is in simplified Chinese.
+#'   Defaults to \code{FALSE}, which treat \code{lu} as traditional Chinese.
 #' @param regex Logical. Whether to use a regular expression pattern in
-#'   the argument \code{query}. Defaults to \code{FALSE}, which searches
-#'   for exact matches.
+#'   the argument \code{lu} for searching. Defaults to \code{FALSE},
+#'   which searches for exact matches.
 #' @param db Character. The databases to be searched. Currently only
 #'   \code{deeplex} and \code{cld} (Chinese Lexical Database) are available.
 #' @param as_tibble Logical. Whether to convert the query results to
@@ -13,7 +58,7 @@
 #'   frame printed out in the console to have a nicer look.
 #' @return A data frame (\code{tibble}).
 #' @export
-query_local <- function(query, regex = FALSE, db = c("deeplex", "cld"), as_tibble = TRUE) {
+query.lu <- function(lu, isSimp = FALSE, regex = FALSE, db = c("deeplex", "cld"), as_tibble = TRUE) {
     # Check argument
     if (FALSE %in% (db %in% c("deeplex", "cld")))
         stop("db: `", paste(db, collapse = "` or `"), "` not available.")
@@ -27,20 +72,22 @@ query_local <- function(query, regex = FALSE, db = c("deeplex", "cld"), as_tibbl
         # query db
         database <- eval(parse(text = db[i]))  # get db
         if (regex)
-            test <- grepl(query, database$lu_trad) | grepl(query, database$lu_simp)
+            if (isSimp)
+                test <- grepl(lu, database$lu_simp)
+            else
+                test <- grepl(lu, database$lu_trad)
         else
-            test <- (query == database$lu_trad) | (query == database$lu_simp)
+            if (isSimp)
+                test <- lu == database$lu_simp
+            else
+                test <- lu == database$lu_trad
 
         # Save query result to list
         q_result[[i]] <- database[test, ]
     }
 
     # Merge query results
-    suppressMessages({
-        df <- dplyr::full_join(q_result[[1]], q_result[[2]])
-        })
-
-    #df <- Reduce(function(df1, df2) merge(df1, df2), q_result)
+    df <- dplyr::distinct(dplyr::bind_rows(q_result))
 
     # Clean up both NA in `lu_simp` & `lu_trad`
     isNA <- is.na(df$lu_simp) & is.na(df$lu_trad)
@@ -52,6 +99,7 @@ query_local <- function(query, regex = FALSE, db = c("deeplex", "cld"), as_tibbl
 
     return(df)
 }
+
 
 
 #' Load databases
