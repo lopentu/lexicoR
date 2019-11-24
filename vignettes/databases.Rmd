@@ -50,7 +50,7 @@ str(deeplex)
 
 The two databases, `deeplex` & `cld`, were preprocessed and left-joined together respectively, before being bundled to the package. Hence, they have identical variables, with the source database's name (`cld.`, `cwn.`, or  `dl.`) prepended to the variables' names.
 
-The variable `cwn.n_sense` records the number of senses of a lemma that can be found in Chinese Wordnet. There are only about 4,500 lemmas in Chinese Wordnet, which is few compared to DeepLex and Chinese Lexical Database, hence many entries in `cwn.n_sense` is `NA`. The venn diagram below shows the number of overlapping and distinct lexical entries found in the three lexical databases.
+The variable `cwn.n_sense` records the number of senses of a lemma that can be found in [Chinese Wordnet](http://lope.linguistics.ntu.edu.tw/cwn2). There are only about 4,500 lemmas in Chinese Wordnet, which is few compared to DeepLex and Chinese Lexical Database, hence many entries in `cwn.n_sense` are `NA`. The venn diagram below shows the number of overlapping and distinct lexical entries found in the three lexical databases.
 
 ![The numbers of overlapping and distinct lexical entries in DeepLex, Chinese Lexical Database, and Chinese Wordnet](cld_deeplex_cwn.png){.half}
 

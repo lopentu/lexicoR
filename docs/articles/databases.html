@@ -437,8 +437,8 @@
 <h2 class="hasAnchor">
 <a href="#lexical-databases-in-lexicor" class="anchor"></a>Lexical databases in <code>lexicoR</code>
 </h2>
-<p>The two databases, <code>deeplex</code> &amp; <code>cld</code>, were preprocessed and left-joined together respectively, before bundling to the package. Hence, they have identical variables, with the source database’s name (<code>cld.</code>, <code>cwn.</code>, or <code>dl.</code>) prepended to the variables’ names.</p>
-<p>The variable <code>cwn.n_sense</code> records the number of senses of a lemma that can be found in Chinese Wordnet. There are only about 4,500 lemmas in Chinese Wordnet, which is few compared to DeepLex and Chinese Lexical Database, hence many entries in <code>cwn.n_sense</code> is <code>NA</code>. The venn diagram below shows the number of overlapping and distinct lexical entries found in the three lexical databases.</p>
+<p>The two databases, <code>deeplex</code> &amp; <code>cld</code>, were preprocessed and left-joined together respectively, before being bundled to the package. Hence, they have identical variables, with the source database’s name (<code>cld.</code>, <code>cwn.</code>, or <code>dl.</code>) prepended to the variables’ names.</p>
+<p>The variable <code>cwn.n_sense</code> records the number of senses of a lemma that can be found in <a href="http://lope.linguistics.ntu.edu.tw/cwn2">Chinese Wordnet</a>. There are only about 4,500 lemmas in Chinese Wordnet, which is few compared to DeepLex and Chinese Lexical Database, hence many entries in <code>cwn.n_sense</code> are <code>NA</code>. The venn diagram below shows the number of overlapping and distinct lexical entries found in the three lexical databases.</p>
 <div class="figure">
 <img src="cld_deeplex_cwn.png" alt="The numbers of overlapping and distinct lexical entries in DeepLex, Chinese Lexical Database, and Chinese Wordnet" class="half"><p class="caption">The numbers of overlapping and distinct lexical entries in DeepLex, Chinese Lexical Database, and Chinese Wordnet</p>
 </div>
