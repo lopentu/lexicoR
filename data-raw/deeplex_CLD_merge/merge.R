@@ -4,6 +4,8 @@ library(dplyr)
 deeplex <- readRDS("Data_summary/deeplex.rds")
 cld <- readRDS("Data_summary/cld.rds")
 cwn <- readRDS("Data_summary/cwn.rds")
+pttFreq <- readRDS("raw_data/pttFreq.rds")
+
 
 ###### Merge ######
 trans <- ropencc::converter(ropencc::S2T)
@@ -11,6 +13,7 @@ trans <- ropencc::converter(ropencc::S2T)
 # Left join: CLD as basis (search with simplified chinese)
 cld_merged <- left_join(cld, deeplex, by = c("cld.Word" = "dl.lu_sim")) %>%
   left_join(cwn, by = c("cld.Word" = "cwn.lemma_sim")) %>%
+  left_join(pttFreq, by = c("cld.Word" = "lu")) %>%
   mutate(cld.Word_trad = ropencc::run_convert(trans, cld.Word)) %>%
   select(cld.Word_trad, cld.Word, everything(), -dl.lu, -cwn.lemma) %>%
   rename(lu_trad = cld.Word_trad,
@@ -18,6 +21,7 @@ cld_merged <- left_join(cld, deeplex, by = c("cld.Word" = "dl.lu_sim")) %>%
 
 # Left join: DeepLex as basis (search with traditional chinese)
 deeplex_merged <- left_join(deeplex, cld, by = c("dl.lu_sim" = "cld.Word")) %>%
+  left_join(pttFreq, by = c("dl.lu_sim" = "lu")) %>%
   left_join(cwn, by = c("dl.lu" = "cwn.lemma")) %>%
   select(dl.lu, dl.lu_sim, everything(), -cwn.lemma_sim) %>%
   rename(lu_trad = dl.lu,
