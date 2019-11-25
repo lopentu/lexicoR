@@ -1,0 +1,29 @@
+---
+title: "Query Word Frequencies on PTT"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Query word frequencies on PTT}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lexicoR)
+```
+
+
+```{r}
+pttFreq("炫炮", board = "Gossiping", year = 2019)
+```
+
+```{r}
+pttFreq("打", board = "NBA", year = 2019)
+```
+
