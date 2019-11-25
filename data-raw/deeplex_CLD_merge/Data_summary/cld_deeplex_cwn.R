@@ -13,15 +13,18 @@ cld <- readRDS("cld.rds")
 
 library(VennDiagram)
 library(RColorBrewer)
+trans <- ropencc::converter(ropencc::S2T)
+cld$cld.Word_trad = ropencc::run_convert(trans, cld$cld.Word)
+
 
 myCol <- brewer.pal(3, "Pastel2")
 
 
 v <- venn.diagram(
         x = list(
-          na.omit(deeplex$dl.lu_sim),
-          na.omit(cwn$cwn.lemma_sim),
-          na.omit(cld$cld.Word)
+          unique(na.omit(deeplex$dl.lu)),
+          unique(na.omit(cwn$cwn.lemma)),
+          unique(na.omit(cld$cld.Word_trad))
         ),
         category.names = c("DeepLex", "Chinese Wordnet", "Chinese Lexical Database"),
         filename = 'cld_deeplex_cwn.png',
