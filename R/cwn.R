@@ -24,7 +24,7 @@ load_cwn <-
         permission <- readline("Press 'y' to download: ")
         if (permission %in% c("y", "Y")) {
             # Download `CwnGraph.zip` from the web
-            lexicoR::install_db(install = c(cwn = T, db = F))
+            lexicoR:::install_db(install = c(cwn = T, db = F))
             load_cwn <- system.file(package = "lexicoR", "CwnGraph", "load_cwn.py")
         }
     }
