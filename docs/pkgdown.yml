@@ -4,4 +4,5 @@ pkgdown_sha: ~
 articles:
   CwnGraph: CwnGraph.html
   databases: databases.html
+  pttFreq: pttFreq.html
 
