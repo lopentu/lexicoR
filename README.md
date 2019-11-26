@@ -1,4 +1,4 @@
-[![Support R Version](https://img.shields.io/badge/R-≥%203.6.0-blue.svg)](https://cran.r-project.org/)
+[![Support R Version](https://img.shields.io/badge/R-≥%203.4.0-blue.svg)](https://cran.r-project.org/)
 
 # lexicoR
 
