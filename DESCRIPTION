@@ -9,7 +9,7 @@ URL: https://lopentu.github.io/lexicoR, https://github.com/lopentu/lexicoR
 BugReports: https://github.com/lopentu/lexicoR/issues
 Description: R interface to access Chinese lexical resources such as 
   Chinese Wordnet (CWN), Chinese Lexical Database, and DeepLex.
-Depends: R (>= 3.6.0)
+Depends: R (>= 3.4.0)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
