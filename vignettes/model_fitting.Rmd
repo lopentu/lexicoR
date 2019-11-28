@@ -23,7 +23,7 @@ tibble::as_tibble(LDT)
 
 ## Reproduce CLD paper
 
-The results below tried to reproduce the results of fitting a linear regression model to the lexical decision latencies for single character words in Table 4 in Sun et al. (2018):
+The code below tried to reproduce the results of fitting a linear regression model to the lexical decision latencies for single character words in Table 4 in Sun et al. (2018):
 
 ![Results of the regression model in Table 4 in Sun et al. (2018)](Sun_table4.png){style="width:50%; display:block; margin: 0 auto; padding: 0 auto"}
 
