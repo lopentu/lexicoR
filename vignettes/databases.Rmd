@@ -14,15 +14,18 @@ knitr::opts_chunk$set(
 )
 ```
 
+
+`lexicoR` contains two lexical databases, [DeepLex](http://dx.doi.org/10.6129%2fCJP.201909_61(3).0004) and [Chinese Lexical Database](http://www.chineselexicaldatabase.com). See [the bottom of the page](#references) for Chinese Lexical Database's original paper. All rights of the Chinese Lexical Database belong to the original authors.
+
+
+
+## Usage
+
 ```{r}
 library(lexicoR)
 ```
 
-
-`lexicoR` contains two lexical databases, [DeepLex](http://dx.doi.org/10.6129%2fCJP.201909_61(3).0004) and [Chinese Lexical Database](http://www.chineselexicaldatabase.com). The function, `query.lu()`, can be used to query lexical entries in these databases. See the bottom of the page for Chinese Lexical Database's original paper. All rights of the Chinese Lexical Database belong to the original authors.
-
-
-## Usage
+The function, `query.lu()`, can be used to query lexical entries in these databases.
 
 ```{r warning=FALSE, message=FALSE}
 query.lu("我", regex = TRUE, isSimp = FALSE)

@@ -99,11 +99,12 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(lexicoR)</span></code></pre></div>
-<p><code>lexicoR</code> contains two lexical databases, <a href="http://dx.doi.org/10.6129%2fCJP.201909_61(3).0004">DeepLex</a> and <a href="http://www.chineselexicaldatabase.com">Chinese Lexical Database</a>. The function, <code><a href="../reference/query.lu.html">query.lu()</a></code>, can be used to query lexical entries in these databases. See the bottom of the page for Chinese Lexical Database’s original paper. All rights of the Chinese Lexical Database belong to the original authors.</p>
+<p><code>lexicoR</code> contains two lexical databases, <a href="http://dx.doi.org/10.6129%2fCJP.201909_61(3).0004">DeepLex</a> and <a href="http://www.chineselexicaldatabase.com">Chinese Lexical Database</a>. See <a href="#references">the bottom of the page</a> for Chinese Lexical Database’s original paper. All rights of the Chinese Lexical Database belong to the original authors.</p>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(lexicoR)</span></code></pre></div>
+<p>The function, <code><a href="../reference/query.lu.html">query.lu()</a></code>, can be used to query lexical entries in these databases.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="../reference/query.lu.html">query.lu</a></span>(<span class="st">"我"</span>, <span class="dt">regex =</span> <span class="ot">TRUE</span>, <span class="dt">isSimp =</span> <span class="ot">FALSE</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt; # A tibble: 652 x 300</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt;    lu_trad lu_simp cld.C1 cld.C123Backwar… cld.C123Backwar… cld.C123Conditi…</span></span>
