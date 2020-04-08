@@ -59,6 +59,9 @@
       <a href="articles/CwnGraph.html">Query Chinese Wordnet with CwnGraph</a>
     </li>
     <li>
+      <a href="articles/asbcFreq.html">Query ASBC Word Frequencies</a>
+    </li>
+    <li>
       <a href="articles/databases.html">Query DeepLex &amp; Chinese Lexical Database</a>
     </li>
     <li>
@@ -98,8 +101,8 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">#install.packages('remotes')</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">'lopentu/lexicoR'</span>, <span class="dt">ref =</span> <span class="st">"lite"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#install.packages('remotes')</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>remotes<span class="op">::</span><span class="kw"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">'lopentu/lexicoR'</span>, <span class="dt">ref =</span> <span class="st">"lite"</span>)</span></code></pre></div>
 </div>
 <div id="notes-for-developers" class="section level2">
 <h2 class="hasAnchor">
@@ -107,16 +110,16 @@
 <div id="build-pkg-website" class="section level4">
 <h4 class="hasAnchor">
 <a href="#build-pkg-website" class="anchor"></a>Build pkg website</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>(<span class="dt">examples =</span> F)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>(<span class="dt">examples =</span> F)</span></code></pre></div>
 </div>
 <div id="clean-up-large-data" class="section level4">
 <h4 class="hasAnchor">
 <a href="#clean-up-large-data" class="anchor"></a>Clean up large data</h4>
 <ol>
-<li>On <code>branch:master</code>, commit and push to GitHub.</li>
+<li><p>On <code>branch:master</code>, commit and push to GitHub.</p></li>
 <li>
 <p>On <code>branch:master</code>, run:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="fu">bash</span> push2lite.sh</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">bash</span> push2lite.sh</span></code></pre></div>
 <p>This pushes a cleaned-up version of the package to <code>branch:lite</code> on GitHub.</p>
 </li>
 </ol>
@@ -125,9 +128,9 @@
 <h4 class="hasAnchor">
 <a href="#rebuild-binaries-from-raw-data" class="anchor"></a>Rebuild binaries from raw data</h4>
 <p>On <code>branch:master</code>, cd to <code>data-raw/deeplex_CLD_merge/</code> and run the commands below in order:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="ex">Rscript</span> toRDS.R</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="ex">Rscript</span> merge.R</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="ex">Rscript</span> bundle2pkg.R</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">Rscript</span> toRDS.R</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">Rscript</span> merge.R</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">Rscript</span> bundle2pkg.R</span></code></pre></div>
 <p>This creates <code>database.rda</code> in the current directory. Compress and copy this file to <code>lopentu/lexicoR-data/inst/</code>.</p>
 </div>
 </div>
