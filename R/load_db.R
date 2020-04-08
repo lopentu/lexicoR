@@ -12,8 +12,8 @@
 #' @return The path to the directory where the databases
 #'   were installed.
 #' @keyword internal
-install_db <- function(cwn_path = NULL, db_path = NULL,
-                       install = c(cwn = TRUE, db = TRUE)) {
+install_db <- function(cwn_path = NULL, db_path = NULL, asbc_freq_path = NULL,
+                       install = c(cwn = TRUE, db = TRUE, asbc_freq = TRUE)) {
     if (is.null(cwn_path) & install[1]) {
         url <- 'https://lopentu.github.io/lexicoR-data/inst/CwnGraph.zip'
         cwn_path <- tempfile()
@@ -24,9 +24,15 @@ install_db <- function(cwn_path = NULL, db_path = NULL,
         db_path <- tempfile()
         download.file(url, destfile = db_path)
     }
+    if (is.null(asbc_freq_path) & install[3]) {
+        url <- 'https://lopentu.github.io/lexicoR-data/inst/ASBC_freq.zip'
+        asbc_freq_path <- tempfile()
+        download.file(url, destfile = asbc_freq_path)
+    }
 
     # Move file to destination
     pkg_path <- system.file(package = "lexicoR")
+
     # CwnGraph.zip
     if (install[1])
         unzip(cwn_path, exdir = pkg_path)
@@ -39,5 +45,10 @@ install_db <- function(cwn_path = NULL, db_path = NULL,
             unzip(db_path, exdir = pkg_path)
         }
     }
+
+    # ASBC_freq.zip
+    if (install[3])
+        unzip(asbc_freq_path, exdir = pkg_path)
+
     return(pkg_path)
 }

@@ -1,3 +1,30 @@
+#' Query lemma frequencies in ASBC
+#'
+#' @param lemma A string. The lemma to be queried in ASBC corpus.
+#' @param regex A string. Whether to use RegEx pattern for query.
+#' @export
+asbcFreq <- function(lemma, regex = FALSE) {
+
+    # Load database for first call
+    load_database.asbc_freq()
+
+    # show total freq info
+    message("Total number of words: ", attr(asbc_wordFreq.internal, "total_freq"))
+
+    if (regex) {
+        matched_words <- grepl(lemma, attr(asbc_wordFreq.internal, "words"))
+        return(asbc_wordFreq.internal[matched_words])
+    } else {
+        if (!lemma %in% attr(asbc_wordFreq.internal, "words")) {
+            warning(lemma, " not found!")
+            return(NULL)
+        }
+        return(asbc_wordFreq.internal[lemma])
+    }
+}
+
+
+
 #' Query lemma frequencies on PTT
 #'
 #' @param lemma A string. The lemma to be queried on PTT.
@@ -121,11 +148,37 @@ load_database.rda <- function() {
         }
     }
 
-    # Load db
+    # Load db if not in Global environment
     if (!(exists('cld') && is.data.frame(get('cld'))))
         message('Loading `database.rds`...\n')
         load(db_path, envir = globalenv())
     if (!(exists('deeplex') && is.data.frame(get('deeplex'))))
         message('Loading `database.rds`...\n')
         load(db_path, envir = globalenv())
+}
+
+
+
+#' Load ASBC Freq Data
+#'
+#' @keywords internal
+load_database.asbc_freq <- function() {
+
+    db_path <- system.file("ASBC_freq.rda", package = "lexicoR")
+    # install ASBC_freq.rda from the internet
+    if (db_path == "") {
+        cat("Can't find `ASBC_freq.rda`\nDo you want to download it?\n")
+        permission <- readline("Press 'y' to download: ")
+        if (permission %in% c("y", "Y")) {
+            # Download `ASBC_freq.rda` from the web
+            lexicoR:::install_db(install = c(cwn = F, db = F, asbc_freq = T))
+            db_path <- system.file("ASBC_freq.rda", package = "lexicoR")
+        }
+    }
+
+    # Load db if not in Global environment
+    if (!exists('asbc_wordFreq.internal')) {
+        message('Loading `ASBC_freq.rda`...\n')
+        load(db_path, envir = globalenv())
+    }
 }
