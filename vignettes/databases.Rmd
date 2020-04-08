@@ -19,7 +19,8 @@ library(lexicoR)
 ```
 
 
-`lexicoR` contains two lexical databases, [DeepLex](http://dx.doi.org/10.6129%2fCJP.201909_61(3).0004) and [Chinese Lexical Database](http://www.chineselexicaldatabase.com). The function, `query.lu()`, can be used to query lexical entries in these databases.
+`lexicoR` contains two lexical databases, [DeepLex](http://dx.doi.org/10.6129%2fCJP.201909_61(3).0004) and [Chinese Lexical Database](http://www.chineselexicaldatabase.com). The function, `query.lu()`, can be used to query lexical entries in these databases. See the bottom of the page for Chinese Lexical Database's original paper. All rights of the Chinese Lexical Database belong to the original authors.
+
 
 ## Usage
 
@@ -54,3 +55,7 @@ The variable `cwn.n_sense` records the number of senses of a lemma that can be f
 
 ![The numbers of overlapping and distinct lexical entries in DeepLex, Chinese Lexical Database, and Chinese Wordnet](cld_deeplex_cwn.png){.half}
 
+
+## References
+
+Sun, C. C., Hendrix, P., Ma, J.Q. & Baayen, R. H. (2018). Chinese Lexical Database (CLD): A large-scale lexical database for simplified Mandarin Chinese. *Behavior Research Methods*, https://doi.org/10.3758/s13428-018-1038-3.
