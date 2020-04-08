@@ -4,7 +4,12 @@
 \alias{install_db}
 \title{Install databases from local file paths or urls}
 \usage{
-install_db(cwn_path = NULL, db_path = NULL, install = c(cwn = TRUE, db = TRUE))
+install_db(
+  cwn_path = NULL,
+  db_path = NULL,
+  asbc_freq_path = NULL,
+  install = c(cwn = TRUE, db = TRUE, asbc_freq = TRUE)
+)
 }
 \arguments{
 \item{cwn_path}{A string. The path to \code{CwnGraph.zip}.

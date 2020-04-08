@@ -2,6 +2,8 @@
 #'
 #' @param lemma A string. The lemma to be queried in ASBC corpus.
 #' @param regex A string. Whether to use RegEx pattern for query.
+#' @return A list with each element specifying the frequency of
+#'   occurrence of the lemma with a particular Part-Of-Speech tag.
 #' @export
 asbcFreq <- function(lemma, regex = FALSE) {
 
