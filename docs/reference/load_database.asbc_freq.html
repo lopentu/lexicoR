@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Install databases from local file paths or urls — install_db • lexicoR</title>
+<title>Load ASBC Freq Data — load_database.asbc_freq • lexicoR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Install databases from local file paths or urls — install_db" />
+<meta property="og:title" content="Load ASBC Freq Data — load_database.asbc_freq" />
 
-<meta property="og:description" content="Install databases from local file paths or urls" />
+<meta property="og:description" content="Load ASBC Freq Data" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,61 +126,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Install databases from local file paths or urls</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lopentu/lexicoR/blob/master/R/load_db.R'><code>R/load_db.R</code></a></small>
-    <div class="hidden name"><code>install_db.Rd</code></div>
+    <h1>Load ASBC Freq Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lopentu/lexicoR/blob/master/R/query.R'><code>R/query.R</code></a></small>
+    <div class="hidden name"><code>load_database.asbc_freq.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Install databases from local file paths or urls</p>
+    <p>Load ASBC Freq Data</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>install_db</span>(
-  <span class='kw'>cwn_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>db_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>asbc_freq_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>install</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>cwn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>db</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>asbc_freq</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>cwn_path</th>
-      <td><p>A string. The path to <code>CwnGraph.zip</code>.
-Defaults to <code>NULL</code>, which downloads <code>CwnGraph.zip</code>
-from the internet and installs it to <code>lexicoR</code>.</p></td>
-    </tr>
-    <tr>
-      <th>db_path</th>
-      <td><p>A string. The path to <code>database.rda</code> or
-<code>database.zip</code>. Defaults to <code>NULL</code>, which
-downloads <code>database.zip</code> from the internet and
-installs it to <code>lexicoR</code>.</p></td>
-    </tr>
-    <tr>
-      <th>install</th>
-      <td><p>Logical. A logical vector specifying which
-databases to install.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>The path to the directory where the databases
-  were installed.</p>
-    
+    <pre class="usage"><span class='fu'>load_database.asbc_freq</span>()</pre>
+        
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

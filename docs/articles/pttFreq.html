@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Query Word Frequencies on PTT • lexicoR</title>
+<title>Query Word Frequencies: PTT &amp; ASBC • lexicoR</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Query Word Frequencies on PTT">
+<meta property="og:title" content="Query Word Frequencies: PTT &amp; ASBC">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -64,7 +64,7 @@
       <a href="../articles/model_fitting.html">Predicting lexical decision latencies in one-character words with CLD &amp; PTT frequency data</a>
     </li>
     <li>
-      <a href="../articles/pttFreq.html">Query Word Frequencies on PTT</a>
+      <a href="../articles/pttFreq.html">Query Word Frequencies: PTT &amp; ASBC</a>
     </li>
   </ul>
 </li>
@@ -86,10 +86,10 @@
 
       
 
-      </header><div class="row">
+      </header><script src="pttFreq_files/header-attrs-2.1.1/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Query Word Frequencies on PTT</h1>
+      <h1>Query Word Frequencies: PTT &amp; ASBC</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/lopentu/lexicoR/blob/master/vignettes/pttFreq.Rmd"><code>vignettes/pttFreq.Rmd</code></a></small>
@@ -99,19 +99,95 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(lexicoR)</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/pttFreq.html">pttFreq</a></span>(<span class="st">"炫炮"</span>, <span class="dt">board =</span> <span class="st">"Gossiping"</span>, <span class="dt">year =</span> <span class="dv">2019</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; $NN</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; [1] 106</span></a></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/pttFreq.html">pttFreq</a></span>(<span class="st">"打"</span>, <span class="dt">board =</span> <span class="st">"NBA"</span>, <span class="dt">year =</span> <span class="dv">2019</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; $VC2</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [1] 53068</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; $VA12</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; [1] 3</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(lexicoR)</span></code></pre></div>
+<div id="ptt" class="section level2">
+<h2 class="hasAnchor">
+<a href="#ptt" class="anchor"></a>PTT</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="../reference/pttFreq.html">pttFreq</a></span>(<span class="st">"炫炮"</span>, <span class="dt">board =</span> <span class="st">"Gossiping"</span>, <span class="dt">year =</span> <span class="dv">2019</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt; $NN</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt; [1] 2.404022e-07</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="../reference/pttFreq.html">pttFreq</a></span>(<span class="st">"打"</span>, <span class="dt">board =</span> <span class="st">"NBA"</span>, <span class="dt">year =</span> <span class="dv">2019</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt; $VC2</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; [1] 0.0001203553</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; </span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; $VA12</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; [1] 6.803836e-09</span></span></code></pre></div>
+</div>
+<div id="asbc" class="section level2">
+<h2 class="hasAnchor">
+<a href="#asbc" class="anchor"></a>ASBC</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="../reference/asbcFreq.html">asbcFreq</a></span>(<span class="st">"黃色"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt; Loading `ASBC_freq.rda`...</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; Total number of words: 11245864</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt; $黃色</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt; $黃色$all</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt; [1] 210</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt; </span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt; $黃色$Na</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; [1] 202</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt; </span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt; $黃色$A</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt; [1] 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="../reference/asbcFreq.html">asbcFreq</a></span>(<span class="st">"^[我他她]們"</span>, <span class="dt">regex =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt; Total number of words: 11245864</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt; $他們</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt; $他們$all</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt; [1] 15272</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt; </span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt; $他們$Nh</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt; [1] 15272</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; </span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt; </span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; $我們</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; $我們$all</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; [1] 27781</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; </span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; $我們$Nh</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; [1] 27781</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; </span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt; </span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#&gt; $她們</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="co">#&gt; $她們$all</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#&gt; [1] 1634</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="co">#&gt; </span></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="co">#&gt; $她們$Nh</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a><span class="co">#&gt; [1] 1634</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="co">#&gt; </span></span>
+<span id="cb5-26"><a href="#cb5-26"></a><span class="co">#&gt; </span></span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="co">#&gt; $他們倆</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#&gt; $他們倆$all</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#&gt; [1] 34</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a><span class="co">#&gt; </span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#&gt; $他們倆$Nh</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="co">#&gt; [1] 34</span></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="co">#&gt; </span></span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="co">#&gt; </span></span>
+<span id="cb5-35"><a href="#cb5-35"></a><span class="co">#&gt; $她們倆</span></span>
+<span id="cb5-36"><a href="#cb5-36"></a><span class="co">#&gt; $她們倆$all</span></span>
+<span id="cb5-37"><a href="#cb5-37"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb5-38"><a href="#cb5-38"></a><span class="co">#&gt; </span></span>
+<span id="cb5-39"><a href="#cb5-39"></a><span class="co">#&gt; $她們倆$Nh</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a><span class="co">#&gt; [1] 3</span></span>
+<span id="cb5-41"><a href="#cb5-41"></a><span class="co">#&gt; </span></span>
+<span id="cb5-42"><a href="#cb5-42"></a><span class="co">#&gt; </span></span>
+<span id="cb5-43"><a href="#cb5-43"></a><span class="co">#&gt; $我們倆</span></span>
+<span id="cb5-44"><a href="#cb5-44"></a><span class="co">#&gt; $我們倆$all</span></span>
+<span id="cb5-45"><a href="#cb5-45"></a><span class="co">#&gt; [1] 24</span></span>
+<span id="cb5-46"><a href="#cb5-46"></a><span class="co">#&gt; </span></span>
+<span id="cb5-47"><a href="#cb5-47"></a><span class="co">#&gt; $我們倆$Nh</span></span>
+<span id="cb5-48"><a href="#cb5-48"></a><span class="co">#&gt; [1] 24</span></span></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#ptt">PTT</a></li>
+      <li><a href="#asbc">ASBC</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

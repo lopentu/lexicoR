@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Install databases from local file paths or urls — install_db • lexicoR</title>
+<title>Query lemma frequencies in ASBC — asbcFreq • lexicoR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Install databases from local file paths or urls — install_db" />
+<meta property="og:title" content="Query lemma frequencies in ASBC — asbcFreq" />
 
-<meta property="og:description" content="Install databases from local file paths or urls" />
+<meta property="og:description" content="Query lemma frequencies in ASBC" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,51 +126,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Install databases from local file paths or urls</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lopentu/lexicoR/blob/master/R/load_db.R'><code>R/load_db.R</code></a></small>
-    <div class="hidden name"><code>install_db.Rd</code></div>
+    <h1>Query lemma frequencies in ASBC</h1>
+    <small class="dont-index">Source: <a href='https://github.com/lopentu/lexicoR/blob/master/R/query.R'><code>R/query.R</code></a></small>
+    <div class="hidden name"><code>asbcFreq.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Install databases from local file paths or urls</p>
+    <p>Query lemma frequencies in ASBC</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>install_db</span>(
-  <span class='kw'>cwn_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>db_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>asbc_freq_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>install</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>cwn</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>db</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>asbc_freq</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>asbcFreq</span>(<span class='no'>lemma</span>, <span class='kw'>regex</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>cwn_path</th>
-      <td><p>A string. The path to <code>CwnGraph.zip</code>.
-Defaults to <code>NULL</code>, which downloads <code>CwnGraph.zip</code>
-from the internet and installs it to <code>lexicoR</code>.</p></td>
+      <th>lemma</th>
+      <td><p>A string. The lemma to be queried in ASBC corpus.</p></td>
     </tr>
     <tr>
-      <th>db_path</th>
-      <td><p>A string. The path to <code>database.rda</code> or
-<code>database.zip</code>. Defaults to <code>NULL</code>, which
-downloads <code>database.zip</code> from the internet and
-installs it to <code>lexicoR</code>.</p></td>
-    </tr>
-    <tr>
-      <th>install</th>
-      <td><p>Logical. A logical vector specifying which
-databases to install.</p></td>
+      <th>regex</th>
+      <td><p>A string. Whether to use RegEx pattern for query.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The path to the directory where the databases
-  were installed.</p>
+    <p>A list with each element specifying the frequency of
+  occurrence of the lemma with a particular Part-Of-Speech tag.</p>
     
 
   </div>
