@@ -145,7 +145,7 @@ load_database.rda <- function() {
         permission <- readline("Press 'y' to download: ")
         if (permission %in% c("y", "Y")) {
             # Download `database.zip` from the web
-,            lexicoR:::install_db(install = c(cwn = F, db = T, asbc_freq = F))
+            lexicoR:::install_db(install = c(cwn = F, db = T, asbc_freq = F))
             db_path <- system.file("database.rda", package = "lexicoR")
         }
     }
